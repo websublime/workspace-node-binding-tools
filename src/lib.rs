@@ -23,16 +23,10 @@ pub fn monorepo_packages() -> Vec<PackageInfo> {
 
 #[napi(js_name = "executeFetchAll")]
 pub fn git_fetch_all(cwd: Option<String>) -> bool {
-  match Git::fetch_all(cwd) {
-    Ok(_) => true,
-    Err(_) => false,
-  }
+  Git::fetch_all(cwd).is_ok()
 }
 
 #[napi(js_name = "executeFetchAllTags")]
 pub fn git_fetch_all_tags(cwd: Option<String>) -> bool {
-  match Git::fetch_all_tags(cwd) {
-    Ok(_) => true,
-    Err(_) => false,
-  }
+  Git::fetch_all_tags(cwd).is_ok()
 }
