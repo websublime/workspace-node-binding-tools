@@ -5,7 +5,7 @@ import {
 } from '@napi-rs/wasm-runtime'
 import { Volume as __Volume, createFsFromVolume as __createFsFromVolume } from '@napi-rs/wasm-runtime/fs'
 
-import __wasmUrl from './package-template.wasm32-wasi.wasm?url'
+import __wasmUrl from './workspace-tools.wasm32-wasi.wasm?url'
 
 const __fs = __createFsFromVolume(
   __Volume.fromJSON({

@@ -31,13 +31,13 @@ const __sharedMemory = new WebAssembly.Memory({
   shared: true,
 })
 
-let __wasmFilePath = __nodePath.join(__dirname, 'package-template.wasm32-wasi.wasm')
+let __wasmFilePath = __nodePath.join(__dirname, 'workspace-tools.wasm32-wasi.wasm')
 
 if (!__nodeFs.existsSync(__wasmFilePath)) {
   try {
-    __wasmFilePath = __nodePath.resolve('@napi-rs/package-template-pnpm-wasm32-wasi')
+    __wasmFilePath = __nodePath.resolve('@websublime/workspace-tools-pnpm-wasm32-wasi')
   } catch {
-    throw new Error('Cannot find package-template.wasm32-wasi.wasm file, and @napi-rs/package-template-pnpm-wasm32-wasi package is not installed.')
+    throw new Error('Cannot find workspace-tools.wasm32-wasi.wasm file, and @websublime/workspace-tools-pnpm-wasm32-wasi package is not installed.')
   }
 }
 
