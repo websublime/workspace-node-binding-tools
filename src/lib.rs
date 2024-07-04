@@ -17,5 +17,5 @@ pub fn defined_agent() -> Option<String> {
 
 #[napi(js_name = "getMonorepoPackages")]
 pub fn monorepo_packages() -> Vec<PackageInfo> {
-    Monorepo::get_packages()
+  Monorepo::get_packages()
 }
