@@ -1,12 +1,12 @@
 {
   "name": "@websublime/workspace-tools-android-arm-eabi",
-  "version": "1.1.1",
+  "version": "0.0.1",
   "cpu": [
     "arm"
   ],
-  "main": "package-template.android-arm-eabi.node",
+  "main": "workspace-tools.android-arm-eabi.node",
   "files": [
-    "package-template.android-arm-eabi.node"
+    "workspace-tools.android-arm-eabi.node"
   ],
   "description": "Template project for writing node package with napi-rs",
   "keywords": [
@@ -26,7 +26,7 @@
     "access": "public"
   },
   "repository": {
-    "url": "git+ssh://git@github.com/napi-rs/package-template-pnpm.git",
+    "url": "git+ssh://git@github.com/websublime/workspace-node-binding-tools.git",
     "type": "git"
   },
   "os": [

@@ -1,12 +1,12 @@
 {
   "name": "@websublime/workspace-tools-freebsd-x64",
-  "version": "1.1.1",
+  "version": "0.0.1",
   "cpu": [
     "x64"
   ],
-  "main": "package-template.freebsd-x64.node",
+  "main": "workspace-tools.freebsd-x64.node",
   "files": [
-    "package-template.freebsd-x64.node"
+    "workspace-tools.freebsd-x64.node"
   ],
   "description": "Template project for writing node package with napi-rs",
   "keywords": [
@@ -26,7 +26,7 @@
     "access": "public"
   },
   "repository": {
-    "url": "git+ssh://git@github.com/napi-rs/package-template-pnpm.git",
+    "url": "git+ssh://git@github.com/websublime/workspace-node-binding-tools.git",
     "type": "git"
   },
   "os": [

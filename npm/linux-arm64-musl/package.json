@@ -1,12 +1,12 @@
 {
   "name": "@websublime/workspace-tools-linux-arm64-musl",
-  "version": "1.1.1",
+  "version": "0.0.1",
   "cpu": [
     "arm64"
   ],
-  "main": "package-template.linux-arm64-musl.node",
+  "main": "workspace-tools.linux-arm64-musl.node",
   "files": [
-    "package-template.linux-arm64-musl.node"
+    "workspace-tools.linux-arm64-musl.node"
   ],
   "description": "Template project for writing node package with napi-rs",
   "keywords": [
@@ -26,7 +26,7 @@
     "access": "public"
   },
   "repository": {
-    "url": "git+ssh://git@github.com/napi-rs/package-template-pnpm.git",
+    "url": "git+ssh://git@github.com/websublime/workspace-node-binding-tools.git",
     "type": "git"
   },
   "os": [
