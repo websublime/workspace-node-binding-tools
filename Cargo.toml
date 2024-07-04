@@ -1,7 +1,7 @@
 [package]
-authors = ["LongYinan <lynweklm@gmail.com>"]
+authors = ["Miguel Ramos <miguel.ramos@websublime.dev>"]
 edition = "2021"
-name = "napi-package-template"
+name = "websublime_workspace-tools"
 version = "0.1.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -10,8 +10,9 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-napi = "2"
-napi-derive = "2"
+napi-derive = "2.16.8"
+napi = { version = "2.16.7", default-features = false, features = ["napi9", "serde-json", "tokio_rt"] }
+workspace-node-tools = "0.5.0"
 
 [build-dependencies]
 napi-build = "2"

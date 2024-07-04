@@ -1,12 +1,12 @@
 {
-  "name": "@napi-rs/package-template-pnpm",
-  "version": "1.1.1",
-  "description": "Template project for writing node package with napi-rs",
+  "name": "@websublime/workspace-tools",
+  "version": "0.0.1",
+  "description": "Bindings for node from crate workspace-node-tools",
   "main": "index.js",
   "types": "index.d.ts",
   "browser": "browser.js",
   "repository": {
-    "url": "git+ssh://git@github.com/napi-rs/package-template-pnpm.git",
+    "url": "git+ssh://git@github.com/websublime/workspace-node-binding-tools.git",
     "type": "git"
   },
   "license": "MIT",
@@ -24,7 +24,7 @@
     "browser.js"
   ],
   "napi": {
-    "binaryName": "package-template",
+    "binaryName": "workspace-tools",
     "targets": [
       "x86_64-apple-darwin",
       "aarch64-apple-darwin",
@@ -34,12 +34,9 @@
       "aarch64-unknown-linux-gnu",
       "i686-pc-windows-msvc",
       "armv7-unknown-linux-gnueabihf",
-      "aarch64-linux-android",
       "x86_64-unknown-freebsd",
       "aarch64-unknown-linux-musl",
-      "aarch64-pc-windows-msvc",
-      "armv7-linux-androideabi",
-      "wasm32-wasi-preview1-threads"
+      "aarch64-pc-windows-msvc"
     ]
   },
   "engines": {

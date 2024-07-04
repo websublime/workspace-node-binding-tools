@@ -1,5 +1,7 @@
-const { plus100 } = require('./index')
+const { getDefinedAgent } = require('./index')
 
-console.assert(plus100(0) === 100, 'Simple test failed')
+const agent = getDefinedAgent();
 
-console.info('Simple test passed')
+console.assert(agent === 'pnpm', 'Simple test failed')
+
+console.info(`Simple test passed: ${agent}`)
