@@ -4,11 +4,11 @@
   "cpu": [
     "wasm32"
   ],
-  "main": "package-template.wasi.cjs",
+  "main": "workspace-tools.wasi.cjs",
   "files": [
-    "package-template.wasm32-wasi.wasm",
-    "package-template.wasi.cjs",
-    "package-template.wasi-browser.js",
+    "workspace-tools.wasm32-wasi.wasm",
+    "workspace-tools.wasi.cjs",
+    "workspace-tools.wasi-browser.js",
     "wasi-worker.mjs",
     "wasi-worker-browser.mjs"
   ],
@@ -33,7 +33,7 @@
     "url": "git+ssh://git@github.com/websublime/workspace-node-binding-tools.git",
     "type": "git"
   },
-  "browser": "package-template.wasi-browser.js",
+  "browser": "workspace-tools.wasi-browser.js",
   "dependencies": {
     "@napi-rs/wasm-runtime": "^0.2.4"
   }
