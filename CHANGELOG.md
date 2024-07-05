@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] - 2024-07-05
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version
+
+## [0.2.0] - 2024-07-04
+
+### 🚀 Features
+
+- Git fetch commands
+
+### 🐛 Bug Fixes
+
+- Redundant match
+
+### ⚙️ Miscellaneous Tasks
+
+- Maintenance changelog and tag
+- Merge pull request #2 from websublime/feature/git-fetch
+
 ## [0.1.0] - 2024-07-04
 
 ### 🚀 Features
