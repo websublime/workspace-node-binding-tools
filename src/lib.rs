@@ -73,9 +73,7 @@ pub fn commits_since(
   since: Option<String>,
   relative: Option<String>,
 ) -> Vec<Commit> {
-  let commits = Git::get_commits_since(cwd, since, relative);
-
-  commits.into()
+  Git::get_commits_since(cwd, since, relative)
 }
 
 #[napi(js_name = "getAllFilesChangedSinceSha")]
