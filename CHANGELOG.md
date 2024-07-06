@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2024-07-06
+
+### 🚀 Features
+
+- Git multiple commands
+
+### 🐛 Bug Fixes
+
+- Useless conversion into
+
+### ⚙️ Miscellaneous Tasks
+
+- Maintenance changelog
+- Maintenance format
+- Merge pull request #3 from websublime/feature/git
+
 ## [0.2.0] - 2024-07-05
 
 ### ⚙️ Miscellaneous Tasks
