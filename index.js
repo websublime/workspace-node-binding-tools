@@ -362,6 +362,23 @@ if (!nativeBinding) {
 }
 
 module.exports.Agent = nativeBinding.Agent
+module.exports.executeFetchAll = nativeBinding.executeFetchAll
+module.exports.executeFetchAllTags = nativeBinding.executeFetchAllTags
+module.exports.getAllFilesChangedSinceBranch = nativeBinding.getAllFilesChangedSinceBranch
+module.exports.getAllFilesChangedSinceSha = nativeBinding.getAllFilesChangedSinceSha
+module.exports.getAllFilesChangedSinceTagInfos = nativeBinding.getAllFilesChangedSinceTagInfos
+module.exports.getCommitsSince = nativeBinding.getCommitsSince
+module.exports.getConventionalForPackage = nativeBinding.getConventionalForPackage
+module.exports.getCurrentSha = nativeBinding.getCurrentSha
 module.exports.getDefinedAgent = nativeBinding.getDefinedAgent
+module.exports.getDivergedCommit = nativeBinding.getDivergedCommit
+module.exports.getLastKnownPublishTagInfoForAllPackages = nativeBinding.getLastKnownPublishTagInfoForAllPackages
+module.exports.getLastKnownPublishTagInfoForPackage = nativeBinding.getLastKnownPublishTagInfoForPackage
+module.exports.getMonorepoChangedPackages = nativeBinding.getMonorepoChangedPackages
 module.exports.getMonorepoPackages = nativeBinding.getMonorepoPackages
 module.exports.getProjectRootPath = nativeBinding.getProjectRootPath
+module.exports.getRemoteOrLocalTags = nativeBinding.getRemoteOrLocalTags
+module.exports.gitPush = nativeBinding.gitPush
+module.exports.isWorkdirUnclean = nativeBinding.isWorkdirUnclean
+module.exports.setCommit = nativeBinding.setCommit
+module.exports.setTag = nativeBinding.setTag
