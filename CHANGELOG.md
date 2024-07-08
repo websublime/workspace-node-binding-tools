@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2024-07-08
+
+### 🚀 Features
+
+- Retrieve changed packages
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version
+- Maintenance changelog
+- Maintenance patch update
+- Disable freebsd
+- Merge pull request #4 from websublime/feature/changed-packages
+
 ## [0.3.0] - 2024-07-06
 
 ### 🚀 Features
@@ -14,15 +28,10 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- Bump version
 - Maintenance changelog
 - Maintenance format
 - Merge pull request #3 from websublime/feature/git
-
-## [0.2.0] - 2024-07-05
-
-### ⚙️ Miscellaneous Tasks
-
-- Bump version
 
 ## [0.2.0] - 2024-07-04
 
