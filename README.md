@@ -1,47 +1,101 @@
-# `@napi-rs/package-template`
+# `@websublime/workspace-tools`
 
-![https://github.com/napi-rs/package-template/actions](https://github.com/napi-rs/package-template/workflows/CI/badge.svg)
+![https://github.com/websublime/workspace-node-binding-tools/actions](https://github.com/websublime/workspace-node-binding-tools/workflows/CI/badge.svg)
 
-> Template project for writing node packages with napi-rs.
-
-# Usage
-
-1. Click **Use this template**.
-2. **Clone** your project.
-3. Run `pnpm install` to install dependencies.
-4. Run `npx napi rename -n [name]` command under the project folder to rename your package.
+> Tools to use on github actions for bumping version, changelogs on a turbo monorepo.
 
 ## Install this test package
 
 ```
-pnpm add @napi-rs/package-template
+pnpm add @websublime/workspace-tools
 ```
 
 ## Usage
 
-### Build
+This package offer a set of functions to retrieve information about the monorepo and the packages that contain. It support all package managers including Bun (WIP).
 
-After `pnpm build` command, you can see `package-template.[darwin|win32|linux].node` file in project root. This is the native addon built from [lib.rs](./src/lib.rs).
+## API
 
-### Test
+### `getProjectRootPath()`
 
-With [ava](https://github.com/avajs/ava), run `pnpm test` to testing native addon. You can also switch to another testing framework if you want.
+Get the root path of the project.
 
-### CI
+### `getDefinedAgent()`
 
-With GitHub Actions, each commit and pull request will be built and tested automatically in [`node@18`, `node@20`] x [`macOS`, `Linux`, `Windows`] matrix. You will never be afraid of the native addon broken in these platforms.
+Get the package manager defined in the project.
 
-### Release
+### `getMonorepoPackages()`
 
-Release native package is very difficult in old days. Native packages may ask developers who use it to install `build toolchain` like `gcc/llvm`, `node-gyp` or something more.
+Get the list of packages in the monorepo.
 
-With `GitHub actions`, we can easily prebuild a `binary` for major platforms. And with `N-API`, we should never be afraid of **ABI Compatible**.
+### `getMonorepoChangedPackages(sha: string)`
 
-The other problem is how to deliver prebuild `binary` to users. Downloading it in `postinstall` script is a common way that most packages do it right now. The problem with this solution is it introduced many other packages to download binary that has not been used by `runtime codes`. The other problem is some users may not easily download the binary from `GitHub/CDN` if they are behind a private network (But in most cases, they have a private NPM mirror).
+Get the list of packages that have changed since the given sha ('main').
 
-In this package, we choose a better way to solve this problem. We release different `npm packages` for different platforms. And add it to `optionalDependencies` before releasing the `Major` package to npm.
+### `executeFetchAll(cwd?: string)`
 
-`NPM` will choose which native package should download from `registry` automatically. You can see [npm](./npm) dir for details. And you can also run `pnpm add @napi-rs/package-template` to see how it works.
+Execute a `fetch` command to get the latest changes from the remote repository.
+
+### `executeFetchAllTags(cwd?: string)`
+
+Execute a `fetch` command to get the latest tags from the remote repository.
+
+### `setCommit(message: string, body?: string, footer?: string cwd?: string)`
+
+Commit the changes to the repository.
+
+### `setTag(tag: string, message?: string, cwd?: string)`
+
+Tag the repository with the given tag.
+
+### `gitPush(cwd?: string)`
+
+Push the changes to the remote repository.
+
+### `getCurrentSha(cwd?: string)`
+
+Get the current sha of the repository.
+
+### `isWorkdirUnclean(cwd?: string)`
+
+Check if the workdir is unclean (uncommited changes).
+
+### `getDivergedCommit(sha: string, cwd?: string)`
+
+Get the diverged commit from the given sha (main).
+
+### `getCommitsSince(cwd?: string, since?: string, relative?: string)`
+
+Get the commits since the given sha (main) for a particular package.
+
+### `getAllFilesChangedSinceSha(sha: string, cwd?: string)`
+
+Get all the files changed since the given sha (main).
+
+### `getAllFilesChangedSinceTagInfos(package_info: Array<PackageInfo>, tag_info: Array<PublishTagInfo>, cwd?: string)`
+
+Get all the files changed since the given tag infos.
+
+### `getAllFilesChangedSinceBranch(package_info: Array<PackageInfo>, brnach: string, cwd?: string)`
+
+Get all the files changed since the given branch.
+
+### `getRemoteOrLocalTags(cwd?: string, local?: boolean)`
+
+Get all the tags in the remote or local repository.
+
+### `getLastKnownPublishTagInfoForPackage(package_info: PackageInfo, cwd?: string)`
+
+Get the last known publish tag info for a particular package.
+
+### `getLastKnownPublishTagInfoForAllPackages(package_info: Array<PackageInfo>, cwd?: string)`
+
+Get the last known publish tag info for all packages.
+
+### `getConventionalForPackage(package_info: PackageInfo, no_fetch_all?: boolean cwd?: string, conventional_options?: ConventionalPackageOptions)`
+
+Get the conventional commits for a particular package.
+
 
 ## Develop requirements
 
@@ -60,8 +114,7 @@ And you will see:
 ```bash
 $ ava --verbose
 
-  ✔ sync function from native code
-  ✔ sleep function from native code (201ms)
+  ✔ get defined package manager
   ─
 
   2 tests passed
@@ -77,6 +130,7 @@ In `Settings -> Secrets`, add **NPM_TOKEN** into it.
 When you want to release the package:
 
 ```
+npm run build
 npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]
 
 git push

@@ -2,6 +2,6 @@ import test from 'ava'
 
 import { getDefinedAgent } from '../index'
 
-test('sync function from native code', (t) => {
+test('get defined package manager', (t) => {
   t.is(getDefinedAgent(), 'pnpm');
 });
