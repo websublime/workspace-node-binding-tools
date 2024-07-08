@@ -22,6 +22,11 @@ pub fn monorepo_packages() -> Vec<PackageInfo> {
   Monorepo::get_packages()
 }
 
+#[napi(js_name = "getMonorepoChangedPackages")]
+pub fn monorepo_changed_packages(sha: Option<String>) -> Vec<PackageInfo> {
+  Monorepo::get_changed_packages(sha)
+}
+
 #[napi(js_name = "executeFetchAll")]
 pub fn git_fetch_all(cwd: Option<String>) -> bool {
   Git::fetch_all(cwd).is_ok()
