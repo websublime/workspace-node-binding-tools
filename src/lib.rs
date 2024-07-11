@@ -2,7 +2,7 @@
 
 use workspace_node_tools::git::commands::{Commit, Git, PublishTagInfo, RemoteTags};
 use workspace_node_tools::git::conventional::{ConventionalPackage, ConventionalPackageOptions};
-use workspace_node_tools::monorepo::packages::{Monorepo, PackageInfo};
+use workspace_node_tools::monorepo::packages::{Monorepo, PackageInfo, PackageRepositoryInfo};
 
 #[macro_use]
 extern crate napi_derive;
@@ -20,6 +20,16 @@ pub fn defined_agent() -> Option<String> {
 #[napi(js_name = "getMonorepoPackages")]
 pub fn monorepo_packages() -> Vec<PackageInfo> {
   Monorepo::get_packages()
+}
+
+#[napi(js_name = "getMonorepoPackageRepositoryInfo")]
+pub fn package_repository_info(url: String) -> PackageRepositoryInfo {
+  Monorepo::get_package_repository_info(url)
+}
+
+#[napi(js_name = "validateMonorepoPackagesJson")]
+pub fn validate_packages_json() -> bool {
+  Monorepo::validate_packages_json()
 }
 
 #[napi(js_name = "getMonorepoChangedPackages")]
