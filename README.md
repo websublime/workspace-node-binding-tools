@@ -4,7 +4,7 @@
 
 > Tools to use on github actions for bumping version, changelogs on a turbo monorepo.
 
-## Install this test package
+## Install this package
 
 ```
 pnpm add @websublime/workspace-tools
