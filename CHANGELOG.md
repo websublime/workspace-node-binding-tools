@@ -2,11 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - 2024-07-11
+
+### ⚙️ Miscellaneous Tasks
+
+- Update readme
+- Validation for package json
+- Merge pull request #5 from websublime/feature/package-info-updates
+- Maintenance build
+
+## [0.4.2] - 2024-07-08
+
+### ⚙️ Miscellaneous Tasks
+
+- Update builded files
+
+## [0.4.1] - 2024-07-08
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version
+- Maintenance changelog
+
 ## [0.4.0] - 2024-07-08
 
 ### 🚀 Features
 
-- Retrieve changed packages
+- Retrive changed packages
 
 ### ⚙️ Miscellaneous Tasks
 
