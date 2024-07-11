@@ -23,10 +23,7 @@ export interface ConventionalPackage {
 }
 
 export interface ConventionalPackageOptions {
-  owner?: string
-  repo?: string
   version?: string
-  domain?: string
   title?: string
 }
 
@@ -56,6 +53,8 @@ export declare function getLastKnownPublishTagInfoForPackage(packageInfo: Packag
 
 export declare function getMonorepoChangedPackages(sha?: string | undefined | null): Array<PackageInfo>
 
+export declare function getMonorepoPackageRepositoryInfo(url: string): PackageRepositoryInfo
+
 export declare function getMonorepoPackages(): Array<PackageInfo>
 
 export declare function getProjectRootPath(): string | null
@@ -75,6 +74,14 @@ export interface PackageInfo {
   pkgJson: any
   root: boolean
   version: string
+  url: string
+  repositoryInfo?: PackageRepositoryInfo
+}
+
+export interface PackageRepositoryInfo {
+  domain: string
+  orga: string
+  project: string
 }
 
 export interface PublishTagInfo {
@@ -91,4 +98,6 @@ export interface RemoteTags {
 export declare function setCommit(message: string, body?: string | undefined | null, footer?: string | undefined | null, cwd?: string | undefined | null): boolean
 
 export declare function setTag(tag: string, message?: string | undefined | null, cwd?: string | undefined | null): boolean
+
+export declare function validateMonorepoPackagesJson(): boolean
 
