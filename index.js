@@ -362,14 +362,11 @@ if (!nativeBinding) {
 }
 
 module.exports.Agent = nativeBinding.Agent
-module.exports.executeFetchAll = nativeBinding.executeFetchAll
-module.exports.executeFetchAllTags = nativeBinding.executeFetchAllTags
 module.exports.getAllFilesChangedSinceBranch = nativeBinding.getAllFilesChangedSinceBranch
 module.exports.getAllFilesChangedSinceSha = nativeBinding.getAllFilesChangedSinceSha
 module.exports.getAllFilesChangedSinceTagInfos = nativeBinding.getAllFilesChangedSinceTagInfos
 module.exports.getCommitsSince = nativeBinding.getCommitsSince
 module.exports.getConventionalForPackage = nativeBinding.getConventionalForPackage
-module.exports.getCurrentSha = nativeBinding.getCurrentSha
 module.exports.getDefinedAgent = nativeBinding.getDefinedAgent
 module.exports.getDivergedCommit = nativeBinding.getDivergedCommit
 module.exports.getLastKnownPublishTagInfoForAllPackages = nativeBinding.getLastKnownPublishTagInfoForAllPackages
@@ -379,8 +376,12 @@ module.exports.getMonorepoPackageRepositoryInfo = nativeBinding.getMonorepoPacka
 module.exports.getMonorepoPackages = nativeBinding.getMonorepoPackages
 module.exports.getProjectRootPath = nativeBinding.getProjectRootPath
 module.exports.getRemoteOrLocalTags = nativeBinding.getRemoteOrLocalTags
+module.exports.gitCommit = nativeBinding.gitCommit
+module.exports.gitCommitBranchName = nativeBinding.gitCommitBranchName
+module.exports.gitCurrentSha = nativeBinding.gitCurrentSha
+module.exports.gitFetchAll = nativeBinding.gitFetchAll
+module.exports.gitFetchAllTags = nativeBinding.gitFetchAllTags
 module.exports.gitPush = nativeBinding.gitPush
+module.exports.gitTag = nativeBinding.gitTag
 module.exports.isWorkdirUnclean = nativeBinding.isWorkdirUnclean
-module.exports.setCommit = nativeBinding.setCommit
-module.exports.setTag = nativeBinding.setTag
 module.exports.validateMonorepoPackagesJson = nativeBinding.validateMonorepoPackagesJson

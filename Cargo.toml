@@ -12,7 +12,7 @@ crate-type = ["cdylib"]
 [dependencies]
 napi-derive = "2.16.8"
 napi = { version = "2.16.7", default-features = false, features = ["napi9", "serde-json", "tokio_rt"] }
-workspace-node-tools = "0.8.1"
+workspace-node-tools = { version = "0.9.0", features = ["napi", "napi-derive"] }
 
 [build-dependencies]
 napi-build = "2"

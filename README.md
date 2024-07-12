@@ -32,19 +32,19 @@ Get the list of packages in the monorepo.
 
 Get the list of packages that have changed since the given sha ('main').
 
-### `executeFetchAll(cwd?: string)`
+### `gitFetchAll(cwd?: string)`
 
 Execute a `fetch` command to get the latest changes from the remote repository.
 
-### `executeFetchAllTags(cwd?: string)`
+### `gitFetchAllTags(cwd?: string)`
 
 Execute a `fetch` command to get the latest tags from the remote repository.
 
-### `setCommit(message: string, body?: string, footer?: string cwd?: string)`
+### `gitCommit(message: string, body?: string, footer?: string cwd?: string)`
 
 Commit the changes to the repository.
 
-### `setTag(tag: string, message?: string, cwd?: string)`
+### `gitTag(tag: string, message?: string, cwd?: string)`
 
 Tag the repository with the given tag.
 
@@ -52,9 +52,13 @@ Tag the repository with the given tag.
 
 Push the changes to the remote repository.
 
-### `getCurrentSha(cwd?: string)`
+### `gitCurrentSha(cwd?: string)`
 
 Get the current sha of the repository.
+
+### `gitCommitBranchName(sha: string, cwd?: string)`
+
+Get the branch name for the commit id.
 
 ### `isWorkdirUnclean(cwd?: string)`
 
@@ -96,6 +100,9 @@ Get the last known publish tag info for all packages.
 
 Get the conventional commits for a particular package.
 
+### `validateMonorepoPackagesJson()`
+
+Validates the minimum config of package.json for the monorepo packages.
 
 ## Develop requirements
 

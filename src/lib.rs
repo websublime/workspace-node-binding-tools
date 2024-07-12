@@ -37,17 +37,17 @@ pub fn monorepo_changed_packages(sha: Option<String>) -> Vec<PackageInfo> {
   Monorepo::get_changed_packages(sha)
 }
 
-#[napi(js_name = "executeFetchAll")]
+#[napi(js_name = "gitFetchAll")]
 pub fn git_fetch_all(cwd: Option<String>) -> bool {
   Git::fetch_all(cwd).is_ok()
 }
 
-#[napi(js_name = "executeFetchAllTags")]
+#[napi(js_name = "gitFetchAllTags")]
 pub fn git_fetch_all_tags(cwd: Option<String>) -> bool {
   Git::fetch_all_tags(cwd).is_ok()
 }
 
-#[napi(js_name = "setCommit")]
+#[napi(js_name = "gitCommit")]
 pub fn commit(
   message: String,
   body: Option<String>,
@@ -57,7 +57,7 @@ pub fn commit(
   Git::git_commit(message, body, footer, cwd).is_ok()
 }
 
-#[napi(js_name = "setTag")]
+#[napi(js_name = "gitTag")]
 pub fn tag(tag: String, message: Option<String>, cwd: Option<String>) -> bool {
   Git::git_tag(tag, message, cwd).is_ok()
 }
@@ -67,9 +67,14 @@ pub fn push(cwd: Option<String>) -> bool {
   Git::git_push(cwd).is_ok()
 }
 
-#[napi(js_name = "getCurrentSha")]
+#[napi(js_name = "gitCurrentSha")]
 pub fn current_sha(cwd: Option<String>) -> String {
   Git::git_current_sha(cwd)
+}
+
+#[napi(js_name = "gitCommitBranchName")]
+pub fn commit_branch_name(sha: String, cwd: Option<String>) -> Option<String> {
+  Git::git_branch_from_commit(sha, cwd)
 }
 
 #[napi(js_name = "isWorkdirUnclean")]
