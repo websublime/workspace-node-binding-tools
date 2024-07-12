@@ -2,7 +2,7 @@
 
 ![https://github.com/websublime/workspace-node-binding-tools/actions](https://github.com/websublime/workspace-node-binding-tools/workflows/CI/badge.svg)
 
-> Tools to use on github actions for bumping version, changelogs on a turbo monorepo.
+> Tools to use on github actions for bumping version, changelogs on a monorepo.
 
 ## Install this package
 
@@ -80,7 +80,7 @@ Get all the files changed since the given sha (main).
 
 Get all the files changed since the given tag infos.
 
-### `getAllFilesChangedSinceBranch(package_info: Array<PackageInfo>, brnach: string, cwd?: string)`
+### `getAllFilesChangedSinceBranch(package_info: Array<PackageInfo>, branch: string, cwd?: string)`
 
 Get all the files changed since the given branch.
 
