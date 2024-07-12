@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2024-07-12
+
+### 🚀 Features
+
+- Get branch name for a commit id
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix typos in readme file
+- Merge pull request #6 from websublime/feature/git-commit-branch
+- Bump version
+
 ## [0.5.0] - 2024-07-11
 
 ### ⚙️ Miscellaneous Tasks
