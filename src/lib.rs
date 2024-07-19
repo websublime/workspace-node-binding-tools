@@ -3,6 +3,10 @@
 use std::path::{Path, PathBuf};
 
 use workspace_node_tools::bumps::{get_bumps, BumpOptions, BumpPackage};
+use workspace_node_tools::changes::{
+  add_change, change_exist, get_change, init_changes, remove_change, Change, ChangesFileData,
+  ChangesOptions,
+};
 use workspace_node_tools::conventional::{
   get_conventional_for_package, ConventionalPackage, ConventionalPackageOptions,
 };
@@ -429,3 +433,89 @@ pub fn js_get_conventional_for_package(
 pub fn js_get_bumps(options: BumpOptions) -> Vec<BumpPackage> {
   get_bumps(options)
 }
+
+/// Init changes
+///
+/// # Examples
+///
+/// ```
+/// const { initChanges } = require('workspace-node-tools');
+/// const changes = initChanges(process.cwd(), ChangesOptions{});
+/// ```
+///
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "initChanges")]
+pub fn js_init_changes(
+  cwd: Option<String>,
+  change_options: Option<ChangesOptions>,
+) -> ChangesFileData {
+  init_changes(cwd, &change_options)
+}
+
+/// Add change
+///
+/// # Examples
+///
+/// ```
+/// const { addChange } = require('workspace-node-tools');
+/// addChange(Change{}, process.cwd());
+/// ```
+///
+/// @param change - The change to add
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "addChange")]
+pub fn js_add_change(change: Change, cwd: Option<String>) -> bool {
+  add_change(&change, cwd)
+}
+
+/// Remove change
+///
+/// # Examples
+///
+/// ```
+/// const { removeChange } = require('workspace-node-tools');
+/// removeChange("branch-name", process.cwd());
+/// ```
+///
+/// @param branch_name - The branch name to remove
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "removeChange")]
+pub fn js_remove_change(branch_name: String, cwd: Option<String>) -> bool {
+  remove_change(branch_name, cwd)
+}
+
+/// Change exist
+///
+/// # Examples
+///
+/// ```
+/// const { changeExist } = require('workspace-node-tools');
+/// const exist = changeExist("branch-name", process.cwd());
+/// ```
+///
+/// @param branch_name - The branch name to check
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "changeExist")]
+pub fn js_change_exist(branch_name: String, cwd: Option<String>) -> bool {
+  change_exist(branch_name, cwd)
+}
+
+/// Get change
+///
+/// # Examples
+///
+/// ```
+/// const { getChange } = require('workspace-node-tools');
+/// const changes = getChange("branch-name", process.cwd());
+/// ```
+///
+/// @param branch_name - The branch name to get
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "getChange")]
+pub fn js_get_change(branch_name: String, cwd: Option<String>) -> Vec<Change> {
+  get_change(branch_name, cwd)
+}
+
+/*pub fn js_get_changes(cwd: Option<String>) -> ChangesData {
+get_changes(cwd)
+}*/
