@@ -1,7 +1,7 @@
-import test from 'ava'
+import test from 'ava';
 
-import { getDefinedAgent } from '../index'
+import { getDefinedPackageManager, PackageManager } from '../index';
 
 test('get defined package manager', (t) => {
-  t.is(getDefinedAgent(), 'pnpm');
+  t.is(getDefinedPackageManager(), PackageManager.Pnpm);
 });

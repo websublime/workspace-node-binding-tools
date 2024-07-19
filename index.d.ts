@@ -82,7 +82,7 @@ export declare function gitFetchAll(cwd?: string | undefined | null, fetchTags?:
 
 export declare function gitFirstSha(cwd?: string | undefined | null, branch?: string | undefined | null): string | null
 
-export declare function gitPreviousSha(cwd?: string | undefined | null): string
+export declare function gitPreviousSha(cwd?: string | undefined | null): string | null
 
 export declare function gitPush(cwd?: string | undefined | null, followTags?: boolean | undefined | null): boolean
 

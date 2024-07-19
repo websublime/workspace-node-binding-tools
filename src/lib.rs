@@ -86,8 +86,8 @@ pub fn js_git_current_sha(cwd: Option<String>) -> String {
 }
 
 #[napi(js_name = "gitPreviousSha")]
-pub fn js_git_previous_sha(cwd: Option<String>) -> String {
-  git_previous_sha(cwd)
+pub fn js_git_previous_sha(cwd: Option<String>) -> Option<String> {
+  Some(git_previous_sha(cwd))
 }
 
 #[napi(js_name = "gitFirstSha")]

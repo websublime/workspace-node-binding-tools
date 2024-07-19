@@ -16,101 +16,33 @@ This package offer a set of functions to retrieve information about the monorepo
 
 ## API
 
-### `getProjectRootPath(root?: String)`
 
-Get the root path of the project.
-
-### `getDefinedPackageManager(root?: String)`
-
-Get the package manager defined in the project.
-
-### `detectPackageManager(root: String)`
-
-Detect the package manager defined in the project.
-
-### `getPackages(cwd?: String)`
-
-Get the list of packages in the monorepo.
-
-### `getChangedPackages(sha?: String, cwd: String)`
-
-Get the list of packages that have changed since the given sha ('main').
-
-### `gitFetchAll(cwd?: String)`
-
-Execute a `fetch` command to get the latest changes from the remote repository.
-
-### `gitCommit(message: string, body?: string, footer?: string cwd?: string)`
-
-Commit the changes to the repository.
-
-### `gitTag(tag: string, message?: string, cwd?: string)`
-
-Tag the repository with the given tag.
-
-### `gitPush(cwd?: string)`
-
-Push the changes to the remote repository.
-
-### `gitCurrentBranch(cwd?: string)`
-
-Get the current branch of the repository.
-
-### `gitCurrentSha(cwd?: string)`
-
-Get the current sha of the repository.
-
-### `gitPreviousSha(cwd?: string)`
-
-Get the previous sha of the repository.
-
-### `gitFirstSha(cwd?: string, branch?: string)`
-
-Get the first commit from a branch (not main)
-
-### `gitCommitBranchName(sha: string, cwd?: string)`
-
-Get the branch name for the commit id.
-
-### `isWorkdirUnclean(cwd?: string)`
-
-Check if the workdir is unclean (uncommited changes).
-
-### `gitAllFilesChangedSinceSha(sha: string, cwd?: string)`
-
-Get all files changed sinc branch, commit id etc.
-
-### `getDivergedCommit(sha: string, cwd?: string)`
-
-Get the diverged commit from the given sha (main).
-
-### `getCommitsSince(cwd?: string, since?: string, relative?: string)`
-
-Get the commits since the given sha (main) for a particular package.
-
-### `getAllFilesChangedSinceBranch(package_info: Array<PackageInfo>, branch: string, cwd?: string)`
-
-Get all the files changed for a branch (main).
-
-### `getRemoteOrLocalTags(cwd?: string, local?: boolean)`
-
-Get all the tags in the remote or local repository.
-
-### `getLastKnownPublishTagInfoForPackage(package_info: PackageInfo, cwd?: string)`
-
-Get the last known publish tag info for a particular package.
-
-### `getLastKnownPublishTagInfoForAllPackages(package_info: Array<PackageInfo>, cwd?: string)`
-
-Get the last known publish tag info for all packages.
-
-### `getConventionalForPackage(package_info: PackageInfo, no_fetch_all?: boolean cwd?: string, conventional_options?: ConventionalPackageOptions)`
-
-Get the conventional commits for a particular package.
-
-### `getBumps(options: BumpOptions)`
-
-Get defined bumps for packages,
+| ###Function | ###Description |
+|---|---|
+| `getProjectRootPath(root?: string): string | undefined` | Get the root path of the project. |
+| `getDefinedPackageManager(root?: string): string | undefined` | Get the package manager defined in the project. |
+| `detectPackageManager(root: string): PackageManager | undefined` | Detect the package manager defined in the project. |
+| `getPackages(cwd?: string): Array<PackageInfo>` | Get the list of packages in the monorepo. |
+| `getChangedPackages(sha?: string, cwd: string): Array<PackageInfo>` | Get the list of packages that have changed since the given sha ('main'). |
+| `gitFetchAll(cwd?: string, fetch_tags?: boolean): boolean` | Execute a `fetch` command to get the latest changes from the remote repository. You can also retrieve tags |
+| `gitCommit(message: string, body?: string, footer?: string cwd?: string): boolean` | Commit the changes. |
+| `gitTag(tag: string, message?: string, cwd?: string): boolean` | Tag the repository with the given tag. |
+| `gitPush(cwd?: string, follow_tags?: boolean): boolean` | Push the changes to the remote repository, including optional tags. |
+| `gitCurrentBranch(cwd?: string): string | undefined` | Get the current branch name. |
+| `gitCurrentSha(cwd?: string): string` | Get's the current commit id. |
+| `gitPreviousSha(cwd?: string): string | undefined` | Get's the previous commit id. |
+| `gitFirstSha(cwd?: string, branch?: string): string | undefined` | Get's the first commit id in a branch. Compare is done between branch..Head, and it should be used as main..HEAD |
+| `isWorkdirUnclean(cwd?: string): boolean` | Check if the workdir is unclean (uncommited changes). |
+| `gitCommitBranchName(sha: string, cwd?: string): string | undefined` | Get the branch name for the commit id. |
+| `gitAllFilesChangedSinceSha(sha: string, cwd?: string): Array<String>` | Get all files changed sinc branch, commit id etc. |
+| `getDivergedCommit(sha: string, cwd?: string): string | undefined` | Get the diverged commit from the given sha (main). |
+| `getCommitsSince(cwd?: string, since?: string, relative?: string): Array<Commit>` | Get the commits since the given sha (main) for a particular package. |
+| `getAllFilesChangedSinceBranch(package_info: Array<PackageInfo>, branch: string, cwd?: string): Array<String>` | Get all the files changed for a branch (main). |
+| `getLastKnownPublishTagInfoForPackage(package_info: PackageInfo, cwd?: string): Array<PublishTagInfo>` | Get the last known publish tag info for a particular package. |
+| `getLastKnownPublishTagInfoForAllPackages(package_info: Array<PackageInfo>, cwd?: string): Array<PublishTagInfo>` | Get the last known publish tag info for all packages. |
+| `getRemoteOrLocalTags(cwd?: string, local?: boolean): Array<RemoteTags>` | Get all the tags in the remote or local repository. |
+| `getConventionalForPackage(package_info: PackageInfo, no_fetch_all?: boolean cwd?: string, conventional_options?: ConventionalPackageOptions): ConventionalPackage` | Get the conventional commits for a particular package, changelog output and package info. |
+| `getBumps(options: BumpOptions): Array<BumpPackage>` | Output bumps version for packages and it's dependencies |
 
 ## Develop requirements
 
