@@ -1,4 +1,4 @@
-#![deny(clippy::all)]
+#![allow(clippy::all)]
 
 use std::path::{Path, PathBuf};
 

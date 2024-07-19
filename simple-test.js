@@ -1,6 +1,6 @@
-const { getDefinedAgent } = require('./index')
+const { getDefinedPackageManager } = require('./index')
 
-const agent = getDefinedAgent();
+const agent = getDefinedPackageManager();
 
 console.assert(agent === 'pnpm', 'Simple test failed')
 
