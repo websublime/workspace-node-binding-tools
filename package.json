@@ -110,5 +110,8 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
-  "packageManager": "pnpm@9.4.0"
+  "packageManager": "pnpm@9.4.0",
+  "dependencies": {
+    "@types/node": "^20.14.11"
+  }
 }
