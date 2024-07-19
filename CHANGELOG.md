@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.4] - 2024-07-19
+
+### 🚀 Features
+
+- Changes implementation
+- GetChanges and types
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump patch version
+- Update readme api documentation
+- Merge pull request #8 from websublime/feature/changes
+
 ## [0.7.3] - 2024-07-19
 
 ### 🐛 Bug Fixes
@@ -16,7 +29,6 @@ All notable changes to this project will be documented in this file.
 - Tests
 - Tests
 - Merge pull request #7 from websublime/fix/canonical-paths
-- Bump patch version
 
 ## [0.7.2] - 2024-07-19
 
