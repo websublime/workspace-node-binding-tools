@@ -22,6 +22,16 @@ use workspace_node_tools::paths::get_project_root_path;
 #[macro_use]
 extern crate napi_derive;
 
+/// Get the project root path
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getProjectRootPath } = require('workspace-node-tools');
+/// const project_root = getProjectRootPath(process.cwd());
+/// ```
+/// 
+/// @param root - The root path to start searching from
 #[napi(js_name = "getProjectRootPath")]
 pub fn js_project_root_path(root: Option<String>) -> Option<String> {
   match root {
@@ -30,31 +40,96 @@ pub fn js_project_root_path(root: Option<String>) -> Option<String> {
   }
 }
 
+/// Get the defined package manager
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getDefinedPackageManager } = require('workspace-node-tools');
+/// const packageManager = getDefinedPackageManager(process.cwd());
+/// ```
+/// 
+/// @param root - The root path to start searching from
 #[napi(js_name = "getDefinedPackageManager")]
 pub fn js_define_package_manager(root: Option<String>) -> Option<PackageManager> {
   get_monorepo_package_manager(root)
 }
 
+/// Detect the package manager
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { detectPackageManager } = require('workspace-node-tools');
+/// const packageManager = detectPackageManager(process.cwd());
+/// ```
+/// 
+/// @param root - The root path to start searching from
 #[napi(js_name = "detectPackageManager")]
 pub fn js_detect_package_manager(root: String) -> Option<PackageManager> {
   detect_package_manager(&Path::new(&root))
 }
 
+/// Get packages available in the monorepo
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getPackages } = require('workspace-node-tools');
+/// const packages = getPackages(process.cwd());
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "getPackages")]
 pub fn js_get_packages(cwd: Option<String>) -> Vec<PackageInfo> {
   get_packages(cwd)
 }
 
+/// Get changed packages
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getChangedPackages } = require('workspace-node-tools');
+/// const changedPackages = getChangedPackages("main", process.cwd());
+/// ```
+/// 
+/// @param sha - The commit sha to compare against (normally main branch)
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "getChangedPackages")]
 pub fn js_get_changed_packages(sha: Option<String>, cwd: Option<String>) -> Vec<PackageInfo> {
   get_changed_packages(sha, cwd)
 }
 
+/// Fetch all git changes
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitFetchAll } = require('workspace-node-tools');
+/// gitFetchAll(process.cwd(), true);
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
+/// @param fetch_tags - Fetch tags from remote
 #[napi(js_name = "gitFetchAll")]
 pub fn js_git_fetch_all(cwd: Option<String>, fetch_tags: Option<bool>) -> bool {
   git_fetch_all(cwd, fetch_tags).is_ok()
 }
 
+/// Commit changes to git
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitCommit } = require('workspace-node-tools');
+/// gitCommit("feat: add new feature", "body", "footer", process.cwd());
+/// ```
+/// 
+/// @param message - The commit message
+/// @param body - The commit body
+/// @param footer - The commit footer
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "gitCommit")]
 pub fn js_git_commit(
   message: String,
@@ -65,56 +140,174 @@ pub fn js_git_commit(
   git_commit(message, body, footer, cwd).is_ok()
 }
 
+/// Tag a git commit
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitTag } = require('workspace-node-tools');
+/// gitTag("v1.0.0", "message", process.cwd());
+/// ```
+/// 
+/// @param tag - The tag to apply
+/// @param message - The tag message
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "gitTag")]
 pub fn js_git_tag(tag: String, message: Option<String>, cwd: Option<String>) -> bool {
   git_tag(tag, message, cwd).is_ok()
 }
 
+/// Push changes to git
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitPush } = require('workspace-node-tools');
+/// gitPush(process.cwd(), true);
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
+/// @param follow_tags - Follow tags
 #[napi(js_name = "gitPush")]
 pub fn js_git_push(cwd: Option<String>, follow_tags: Option<bool>) -> bool {
   git_push(cwd, follow_tags).is_ok()
 }
 
+/// Get the current branch
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitCurrentBranch } = require('workspace-node-tools');
+/// const branch = gitCurrentBranch(process.cwd());
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "gitCurrentBranch")]
 pub fn js_git_current_branch(cwd: Option<String>) -> Option<String> {
   git_current_branch(cwd)
 }
 
+/// Get the current commit id
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitCurrentSha } = require('workspace-node-tools');
+/// const sha = gitCurrentSha(process.cwd());
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "gitCurrentSha")]
 pub fn js_git_current_sha(cwd: Option<String>) -> String {
   git_current_sha(cwd)
 }
 
+/// Get the previous commit id
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitPreviousSha } = require('workspace-node-tools');
+/// const sha = gitPreviousSha(process.cwd());
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "gitPreviousSha")]
 pub fn js_git_previous_sha(cwd: Option<String>) -> Option<String> {
   Some(git_previous_sha(cwd))
 }
 
+/// Get the first commit id
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitFirstSha } = require('workspace-node-tools');
+/// const sha = gitFirstSha(process.cwd());
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "gitFirstSha")]
 pub fn js_git_first_sha(cwd: Option<String>, branch: Option<String>) -> Option<String> {
   Some(git_first_sha(cwd, branch))
 }
 
+/// Check if the workdir is unclean
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { isWorkdirUnclean } = require('workspace-node-tools');
+/// const unclean = isWorkdirUnclean(process.cwd());
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "isWorkdirUnclean")]
 pub fn js_git_workdir_unclean(cwd: Option<String>) -> bool {
   git_workdir_unclean(cwd)
 }
 
+/// Get the branch name from a commit id
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitCommitBranchName } = require('workspace-node-tools');
+/// const branch = gitCommitBranchName("sha", process.cwd());
+/// ```
+/// 
+/// @param sha - The commit id
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "gitCommitBranchName")]
 pub fn js_git_branch_from_commit(sha: String, cwd: Option<String>) -> Option<String> {
   git_branch_from_commit(sha, cwd)
 }
 
+/// Get all files changed since a commit id
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { gitAllFilesChangedSinceSha } = require('workspace-node-tools');
+/// const files = gitAllFilesChangedSinceSha("sha", process.cwd());
+/// ```
+/// 
+/// @param sha - The commit id (accepts branch, tag)
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "gitAllFilesChangedSinceSha")]
 pub fn js_git_all_files_changed_since_sha(sha: String, cwd: Option<String>) -> Vec<String> {
   git_all_files_changed_since_sha(sha, cwd)
 }
 
+/// Get the diverged commit
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getDivergedCommit } = require('workspace-node-tools');
+/// const diverged = getDivergedCommit("main", process.cwd());
+/// ```
+/// 
+/// @param refer - The branch to compare against
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "getDivergedCommit")]
 pub fn js_get_diverged_commit(refer: String, cwd: Option<String>) -> Option<String> {
   get_diverged_commit(refer, cwd)
 }
 
+/// Get commits since a commit id
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getCommitsSince } = require('workspace-node-tools');
+/// const commits = getCommitsSince(process.cwd(), "main", "packages/package-a");
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
+/// @param since - The commit id (accepts branch, tag)
+/// @param relative - The relative path to search from
 #[napi(js_name = "getCommitsSince")]
 pub fn js_get_commits_since(
   cwd: Option<String>,
@@ -124,6 +317,18 @@ pub fn js_get_commits_since(
   get_commits_since(cwd, since, relative)
 }
 
+/// Get all files changed since a branch
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getAllFilesChangedSinceBranch } = require('workspace-node-tools');
+/// const files = getAllFilesChangedSinceBranch([PackageInfo{}], "main", process.cwd());
+/// ```
+/// 
+/// @param package_info - The list of package info
+/// @param branch - The branch to compare against
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "getAllFilesChangedSinceBranch")]
 pub fn js_get_all_files_changed_since_branch(
   package_info: Vec<PackageInfo>,
@@ -133,6 +338,17 @@ pub fn js_get_all_files_changed_since_branch(
   get_all_files_changed_since_branch(&package_info, &branch, cwd)
 }
 
+/// Get the last known publish tag info for a package
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getLastKnownPublishTagInfoForPackage } = require('workspace-node-tools');
+/// const tagInfo = getLastKnownPublishTagInfoForPackage(PackageInfo{}, process.cwd());
+/// ```
+/// 
+/// @param package_info - The package info
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "getLastKnownPublishTagInfoForPackage")]
 pub fn js_get_last_known_publish_tag_info_for_package(
   package_info: PackageInfo,
@@ -141,6 +357,17 @@ pub fn js_get_last_known_publish_tag_info_for_package(
   get_last_known_publish_tag_info_for_package(&package_info, cwd)
 }
 
+/// Get the last known publish tag info for all packages
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getLastKnownPublishTagInfoForAllPackages } = require('workspace-node-tools');
+/// const tagInfo = getLastKnownPublishTagInfoForAllPackages([PackageInfo{}], process.cwd());
+/// ```
+/// 
+/// @param package_info - The list of package info
+/// @param cwd - The root path to start searching from
 #[napi(js_name = "getLastKnownPublishTagInfoForAllPackages")]
 pub fn js_get_last_known_publish_tag_info_for_all_packages(
   package_info: Vec<PackageInfo>,
@@ -149,11 +376,35 @@ pub fn js_get_last_known_publish_tag_info_for_all_packages(
   get_last_known_publish_tag_info_for_all_packages(&package_info, cwd)
 }
 
+/// Get remote or local tags
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getRemoteOrLocalTags } = require('workspace-node-tools');
+/// const tags = getRemoteOrLocalTags(process.cwd(), true);
+/// ```
+/// 
+/// @param cwd - The root path to start searching from
+/// @param local - Fetch local tags
 #[napi(js_name = "getRemoteOrLocalTags")]
 pub fn js_get_remote_or_local_tags(cwd: Option<String>, local: Option<bool>) -> Vec<RemoteTags> {
   get_remote_or_local_tags(cwd, local)
 }
 
+/// Get the conventional for a package
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getConventionalForPackage } = require('workspace-node-tools');
+/// const conventional = getConventionalForPackage(PackageInfo{}, false, process.cwd(), ConventionalPackageOptions{});
+/// ```
+/// 
+/// @param package_info - The package info
+/// @param no_fetch_all - Do not fetch all commits
+/// @param cwd - The root path to start searching from
+/// @param conventional_options - The conventional options
 #[napi(js_name = "getConventionalForPackage")]
 pub fn js_get_conventional_for_package(
   package_info: PackageInfo,
@@ -164,6 +415,16 @@ pub fn js_get_conventional_for_package(
   get_conventional_for_package(&package_info, no_fetch_all, cwd, &conventional_options)
 }
 
+/// Get bumps
+/// 
+/// # Examples
+/// 
+/// ```
+/// const { getBumps } = require('workspace-node-tools');
+/// const bumps = getBumps(BumpOptions{});
+/// ```
+/// 
+/// @param options - The bump options
 #[napi(js_name = "getBumps")]
 pub fn js_get_bumps(options: BumpOptions) -> Vec<BumpPackage> {
   get_bumps(options)
