@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.0] - 2024-07-19
+
+### 🚀 Features
+
+- GetBumps and update to new tools lib
+
 ## [0.6.0] - 2024-07-12
 
 ### 🚀 Features
