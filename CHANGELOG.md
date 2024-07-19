@@ -2,15 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.2] - 2024-07-19
+
+### 🐛 Bug Fixes
+
+- Binding tests
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump patch version
+
 ## [0.7.1] - 2024-07-19
 
 ### 🐛 Bug Fixes
 
 - Binding test
-
-### ⚙️ Miscellaneous Tasks
-
-- Bump patch version
 
 ## [0.7.0] - 2024-07-19
 
