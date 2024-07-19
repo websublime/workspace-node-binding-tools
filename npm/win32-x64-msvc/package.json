@@ -1,6 +1,6 @@
 {
   "name": "@websublime/workspace-tools-win32-x64-msvc",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "cpu": [
     "x64"
   ],
