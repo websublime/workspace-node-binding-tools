@@ -4,8 +4,8 @@ use std::path::{Path, PathBuf};
 
 use workspace_node_tools::bumps::{get_bumps, BumpOptions, BumpPackage};
 use workspace_node_tools::changes::{
-  add_change, change_exist, get_change, init_changes, remove_change, Change, ChangesFileData,
-  ChangesOptions,
+  add_change, change_exist, get_change, get_changes, init_changes, remove_change, Change, Changes,
+  ChangesFileData, ChangesOptions,
 };
 use workspace_node_tools::conventional::{
   get_conventional_for_package, ConventionalPackage, ConventionalPackageOptions,
@@ -516,6 +516,17 @@ pub fn js_get_change(branch_name: String, cwd: Option<String>) -> Vec<Change> {
   get_change(branch_name, cwd)
 }
 
-/*pub fn js_get_changes(cwd: Option<String>) -> ChangesData {
-get_changes(cwd)
-}*/
+/// Get changes
+///
+/// # Examples
+///
+/// ```
+/// const { getChanges } = require('workspace-node-tools');
+/// const changes = getChanges(process.cwd());
+/// ```
+///
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "getChanges")]
+pub fn js_get_changes(cwd: Option<String>) -> Changes {
+  get_changes(cwd)
+}

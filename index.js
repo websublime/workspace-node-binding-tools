@@ -361,11 +361,15 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
+module.exports.addChange = nativeBinding.addChange
 module.exports.Bump = nativeBinding.Bump
+module.exports.changeExist = nativeBinding.changeExist
 module.exports.detectPackageManager = nativeBinding.detectPackageManager
 module.exports.getAllFilesChangedSinceBranch = nativeBinding.getAllFilesChangedSinceBranch
 module.exports.getBumps = nativeBinding.getBumps
+module.exports.getChange = nativeBinding.getChange
 module.exports.getChangedPackages = nativeBinding.getChangedPackages
+module.exports.getChanges = nativeBinding.getChanges
 module.exports.getCommitsSince = nativeBinding.getCommitsSince
 module.exports.getConventionalForPackage = nativeBinding.getConventionalForPackage
 module.exports.getDefinedPackageManager = nativeBinding.getDefinedPackageManager
@@ -385,5 +389,7 @@ module.exports.gitFirstSha = nativeBinding.gitFirstSha
 module.exports.gitPreviousSha = nativeBinding.gitPreviousSha
 module.exports.gitPush = nativeBinding.gitPush
 module.exports.gitTag = nativeBinding.gitTag
+module.exports.initChanges = nativeBinding.initChanges
 module.exports.isWorkdirUnclean = nativeBinding.isWorkdirUnclean
 module.exports.PackageManager = nativeBinding.PackageManager
+module.exports.removeChange = nativeBinding.removeChange

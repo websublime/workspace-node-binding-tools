@@ -17,7 +17,7 @@ napi = { version = "2.16.8", default-features = false, features = [
   "serde-json",
   "tokio_rt",
 ] }
-workspace-node-tools = { version = "1.0.7", features = ["napi", "napi-derive"] }
+workspace-node-tools = { version = "1.0.8", features = ["napi", "napi-derive"] }
 
 [build-dependencies]
 napi-build = "2"
