@@ -361,27 +361,29 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-module.exports.Agent = nativeBinding.Agent
+module.exports.Bump = nativeBinding.Bump
+module.exports.detectPackageManager = nativeBinding.detectPackageManager
 module.exports.getAllFilesChangedSinceBranch = nativeBinding.getAllFilesChangedSinceBranch
-module.exports.getAllFilesChangedSinceSha = nativeBinding.getAllFilesChangedSinceSha
-module.exports.getAllFilesChangedSinceTagInfos = nativeBinding.getAllFilesChangedSinceTagInfos
+module.exports.getBumps = nativeBinding.getBumps
+module.exports.getChangedPackages = nativeBinding.getChangedPackages
 module.exports.getCommitsSince = nativeBinding.getCommitsSince
 module.exports.getConventionalForPackage = nativeBinding.getConventionalForPackage
-module.exports.getDefinedAgent = nativeBinding.getDefinedAgent
+module.exports.getDefinedPackageManager = nativeBinding.getDefinedPackageManager
 module.exports.getDivergedCommit = nativeBinding.getDivergedCommit
 module.exports.getLastKnownPublishTagInfoForAllPackages = nativeBinding.getLastKnownPublishTagInfoForAllPackages
 module.exports.getLastKnownPublishTagInfoForPackage = nativeBinding.getLastKnownPublishTagInfoForPackage
-module.exports.getMonorepoChangedPackages = nativeBinding.getMonorepoChangedPackages
-module.exports.getMonorepoPackageRepositoryInfo = nativeBinding.getMonorepoPackageRepositoryInfo
-module.exports.getMonorepoPackages = nativeBinding.getMonorepoPackages
+module.exports.getPackages = nativeBinding.getPackages
 module.exports.getProjectRootPath = nativeBinding.getProjectRootPath
 module.exports.getRemoteOrLocalTags = nativeBinding.getRemoteOrLocalTags
+module.exports.gitAllFilesChangedSinceSha = nativeBinding.gitAllFilesChangedSinceSha
 module.exports.gitCommit = nativeBinding.gitCommit
 module.exports.gitCommitBranchName = nativeBinding.gitCommitBranchName
+module.exports.gitCurrentBranch = nativeBinding.gitCurrentBranch
 module.exports.gitCurrentSha = nativeBinding.gitCurrentSha
 module.exports.gitFetchAll = nativeBinding.gitFetchAll
-module.exports.gitFetchAllTags = nativeBinding.gitFetchAllTags
+module.exports.gitFirstSha = nativeBinding.gitFirstSha
+module.exports.gitPreviousSha = nativeBinding.gitPreviousSha
 module.exports.gitPush = nativeBinding.gitPush
 module.exports.gitTag = nativeBinding.gitTag
 module.exports.isWorkdirUnclean = nativeBinding.isWorkdirUnclean
-module.exports.validateMonorepoPackagesJson = nativeBinding.validateMonorepoPackagesJson
+module.exports.PackageManager = nativeBinding.PackageManager

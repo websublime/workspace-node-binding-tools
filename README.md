@@ -16,29 +16,29 @@ This package offer a set of functions to retrieve information about the monorepo
 
 ## API
 
-### `getProjectRootPath()`
+### `getProjectRootPath(root?: String)`
 
 Get the root path of the project.
 
-### `getDefinedAgent()`
+### `getDefinedPackageManager(root?: String)`
 
 Get the package manager defined in the project.
 
-### `getMonorepoPackages()`
+### `detectPackageManager(root: String)`
+
+Detect the package manager defined in the project.
+
+### `getPackages(cwd?: String)`
 
 Get the list of packages in the monorepo.
 
-### `getMonorepoChangedPackages(sha: string)`
+### `getChangedPackages(sha?: String, cwd: String)`
 
 Get the list of packages that have changed since the given sha ('main').
 
-### `gitFetchAll(cwd?: string)`
+### `gitFetchAll(cwd?: String)`
 
 Execute a `fetch` command to get the latest changes from the remote repository.
-
-### `gitFetchAllTags(cwd?: string)`
-
-Execute a `fetch` command to get the latest tags from the remote repository.
 
 ### `gitCommit(message: string, body?: string, footer?: string cwd?: string)`
 
@@ -52,9 +52,21 @@ Tag the repository with the given tag.
 
 Push the changes to the remote repository.
 
+### `gitCurrentBranch(cwd?: string)`
+
+Get the current branch of the repository.
+
 ### `gitCurrentSha(cwd?: string)`
 
 Get the current sha of the repository.
+
+### `gitPreviousSha(cwd?: string)`
+
+Get the previous sha of the repository.
+
+### `gitFirstSha(cwd?: string, branch?: string)`
+
+Get the first commit from a branch (not main)
 
 ### `gitCommitBranchName(sha: string, cwd?: string)`
 
@@ -64,6 +76,10 @@ Get the branch name for the commit id.
 
 Check if the workdir is unclean (uncommited changes).
 
+### `gitAllFilesChangedSinceSha(sha: string, cwd?: string)`
+
+Get all files changed sinc branch, commit id etc.
+
 ### `getDivergedCommit(sha: string, cwd?: string)`
 
 Get the diverged commit from the given sha (main).
@@ -72,17 +88,9 @@ Get the diverged commit from the given sha (main).
 
 Get the commits since the given sha (main) for a particular package.
 
-### `getAllFilesChangedSinceSha(sha: string, cwd?: string)`
-
-Get all the files changed since the given sha (main).
-
-### `getAllFilesChangedSinceTagInfos(package_info: Array<PackageInfo>, tag_info: Array<PublishTagInfo>, cwd?: string)`
-
-Get all the files changed since the given tag infos.
-
 ### `getAllFilesChangedSinceBranch(package_info: Array<PackageInfo>, branch: string, cwd?: string)`
 
-Get all the files changed since the given branch.
+Get all the files changed for a branch (main).
 
 ### `getRemoteOrLocalTags(cwd?: string, local?: boolean)`
 
@@ -100,9 +108,9 @@ Get the last known publish tag info for all packages.
 
 Get the conventional commits for a particular package.
 
-### `validateMonorepoPackagesJson()`
+### `getBumps(options: BumpOptions)`
 
-Validates the minimum config of package.json for the monorepo packages.
+Get defined bumps for packages,
 
 ## Develop requirements
 
