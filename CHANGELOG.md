@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.5] - 2024-07-22
+
+### 🚀 Features
+
+- Add changes file exist to api
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #9 from websublime/feature/changes-file-exist
+
 ## [0.7.4] - 2024-07-19
 
 ### 🚀 Features
