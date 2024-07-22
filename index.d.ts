@@ -15,7 +15,7 @@
  */
 export declare function addChange(change: Change, cwd?: string | undefined | null): boolean
 
-export enum Bump {
+export const enum Bump {
   Major = 'Major',
   Minor = 'Minor',
   Patch = 'Patch',
@@ -70,6 +70,20 @@ export interface ChangesFileData {
   message?: string
   changes: ChangesData
 }
+
+/**
+ * Changes file exist
+ *
+ * # Examples
+ *
+ * ```
+ * const { changesFileExist } = require('workspace-node-tools');
+ * const exist = changesFileExist(process.cwd());
+ * ```
+ *
+ * @param cwd - The root path to start searching from
+ */
+export declare function changesFileExist(cwd?: string | undefined | null): boolean
 
 export interface ChangesOptions {
   message?: string
@@ -546,7 +560,7 @@ export interface PackageInfo {
   changedFiles: Array<string>
 }
 
-export enum PackageManager {
+export const enum PackageManager {
   Npm = 'Npm',
   Yarn = 'Yarn',
   Pnpm = 'Pnpm',
