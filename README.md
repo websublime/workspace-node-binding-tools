@@ -48,6 +48,7 @@ This package offer a set of functions to retrieve information about the monorepo
 | `change_exist(branch_name: string, cwd?: string): boolean`                                                                                                          | Check if change already exist.                                                                                   |
 | `get_change(branch_name: string, cwd?: string): Array<Change>`                                                                                                      | Get the list of changes for the branch.                                                                          |
 | `get_changes(cwd?: string): Changes`                                                                                                                                | Get all changes.                                                                                                 |
+| `changes_file_exist(cwd?: string): boolean`                                                                                                                         | Check if `.changes.json` file exist                                                                              |
 
 ## Develop requirements
 

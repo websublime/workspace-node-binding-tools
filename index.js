@@ -364,6 +364,7 @@ if (!nativeBinding) {
 module.exports.addChange = nativeBinding.addChange
 module.exports.Bump = nativeBinding.Bump
 module.exports.changeExist = nativeBinding.changeExist
+module.exports.changesFileExist = nativeBinding.changesFileExist
 module.exports.detectPackageManager = nativeBinding.detectPackageManager
 module.exports.getAllFilesChangedSinceBranch = nativeBinding.getAllFilesChangedSinceBranch
 module.exports.getBumps = nativeBinding.getBumps
