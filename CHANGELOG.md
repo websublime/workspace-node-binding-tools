@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.6] - 2024-07-23
+
+### 🚀 Features
+
+- Apply bumps and new git commands
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #10 from websublime/feature/apply-bumps
+
 ## [0.7.5] - 2024-07-22
 
 ### 🚀 Features
