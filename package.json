@@ -1,6 +1,6 @@
 {
   "name": "@websublime/workspace-tools",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "Bindings for node from crate workspace-node-tools",
   "main": "index.js",
   "types": "index.d.ts",
