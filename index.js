@@ -362,6 +362,7 @@ if (!nativeBinding) {
 }
 
 module.exports.addChange = nativeBinding.addChange
+module.exports.applyBumps = nativeBinding.applyBumps
 module.exports.Bump = nativeBinding.Bump
 module.exports.changeExist = nativeBinding.changeExist
 module.exports.changesFileExist = nativeBinding.changesFileExist
@@ -380,9 +381,12 @@ module.exports.getLastKnownPublishTagInfoForPackage = nativeBinding.getLastKnown
 module.exports.getPackages = nativeBinding.getPackages
 module.exports.getProjectRootPath = nativeBinding.getProjectRootPath
 module.exports.getRemoteOrLocalTags = nativeBinding.getRemoteOrLocalTags
+module.exports.gitAdd = nativeBinding.gitAdd
+module.exports.gitAddAll = nativeBinding.gitAddAll
 module.exports.gitAllFilesChangedSinceSha = nativeBinding.gitAllFilesChangedSinceSha
 module.exports.gitCommit = nativeBinding.gitCommit
 module.exports.gitCommitBranchName = nativeBinding.gitCommitBranchName
+module.exports.gitConfig = nativeBinding.gitConfig
 module.exports.gitCurrentBranch = nativeBinding.gitCurrentBranch
 module.exports.gitCurrentSha = nativeBinding.gitCurrentSha
 module.exports.gitFetchAll = nativeBinding.gitFetchAll
