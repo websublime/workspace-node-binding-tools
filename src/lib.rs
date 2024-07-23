@@ -2,7 +2,7 @@
 
 use std::path::{Path, PathBuf};
 
-use workspace_node_tools::bumps::{get_bumps, BumpOptions, BumpPackage};
+use workspace_node_tools::bumps::{apply_bumps, get_bumps, BumpOptions, BumpPackage};
 use workspace_node_tools::changes::{
   add_change, change_exist, changes_file_exist, get_change, get_changes, init_changes,
   remove_change, Change, Changes, ChangesFileData, ChangesOptions,
@@ -13,9 +13,10 @@ use workspace_node_tools::conventional::{
 use workspace_node_tools::git::{
   get_all_files_changed_since_branch, get_commits_since, get_diverged_commit,
   get_last_known_publish_tag_info_for_all_packages, get_last_known_publish_tag_info_for_package,
-  get_remote_or_local_tags, git_all_files_changed_since_sha, git_branch_from_commit, git_commit,
-  git_current_branch, git_current_sha, git_fetch_all, git_first_sha, git_previous_sha, git_push,
-  git_tag, git_workdir_unclean, Commit, PublishTagInfo, RemoteTags,
+  get_remote_or_local_tags, git_add, git_add_all, git_all_files_changed_since_sha,
+  git_branch_from_commit, git_commit, git_config, git_current_branch, git_current_sha,
+  git_fetch_all, git_first_sha, git_previous_sha, git_push, git_tag, git_workdir_unclean, Commit,
+  PublishTagInfo, RemoteTags,
 };
 use workspace_node_tools::manager::{detect_package_manager, PackageManager};
 use workspace_node_tools::packages::{
@@ -103,6 +104,69 @@ pub fn js_get_packages(cwd: Option<String>) -> Vec<PackageInfo> {
 #[napi(js_name = "getChangedPackages")]
 pub fn js_get_changed_packages(sha: Option<String>, cwd: Option<String>) -> Vec<PackageInfo> {
   get_changed_packages(sha, cwd)
+}
+
+/// Git add file to staging
+///
+/// # Examples
+///
+/// ```
+/// const { gitAdd } = require('workspace-node-tools');
+/// gitAdd("package.json", process.cwd());
+/// ```
+///
+/// @param file - The file to add to staging
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "gitAdd")]
+pub fn js_git_add(file: String, cwd: Option<String>) -> bool {
+  let ref project_root = match cwd {
+    Some(root) => get_project_root_path(Some(PathBuf::from(root))),
+    None => get_project_root_path(None),
+  };
+
+  git_add(&project_root.as_ref().unwrap(), &file).is_ok()
+}
+
+/// Git add all files to staging
+///
+/// # Examples
+///
+/// ```
+/// const { gitAddAll } = require('workspace-node-tools');
+/// gitAddAll(process.cwd());
+/// ```
+///
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "gitAddAll")]
+pub fn js_git_add_all(cwd: Option<String>) -> bool {
+  let project_root = match cwd {
+    Some(root) => get_project_root_path(Some(PathBuf::from(root))),
+    None => get_project_root_path(None),
+  };
+
+  git_add_all(&project_root.as_ref().unwrap()).is_ok()
+}
+
+/// Git config user name and email
+///
+/// # Examples
+///
+/// ```
+/// const { gitConfig } = require('workspace-node-tools');
+/// gitConfig("John Doe", "john.doe@email.com", process.cwd());
+/// ```
+///
+/// @param name - The user name to set
+/// @param email - The user email to set
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "gitConfig")]
+pub fn js_git_config(name: String, email: String, cwd: Option<String>) -> bool {
+  let project_root = match cwd {
+    Some(root) => get_project_root_path(Some(PathBuf::from(root))),
+    None => get_project_root_path(None),
+  };
+
+  git_config(&name, &email, &project_root.as_ref().unwrap()).is_ok()
 }
 
 /// Fetch all git changes
@@ -432,6 +496,22 @@ pub fn js_get_conventional_for_package(
 #[napi(js_name = "getBumps")]
 pub fn js_get_bumps(options: BumpOptions) -> Vec<BumpPackage> {
   get_bumps(options)
+}
+
+/// Apply bumps to a package. This will update the package.json version and changelog
+/// files.
+///
+/// # Examples
+///
+/// ```
+/// const { applyBumps } = require('workspace-node-tools');
+/// applyBumps(BumpOptions{});
+/// ```
+///
+/// @param options - The bump options
+#[napi(js_name = "applyBumps")]
+pub fn js_apply_bumps(options: BumpOptions) -> Vec<BumpPackage> {
+  apply_bumps(options)
 }
 
 /// Init changes

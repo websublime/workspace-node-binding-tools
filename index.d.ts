@@ -15,6 +15,21 @@
  */
 export declare function addChange(change: Change, cwd?: string | undefined | null): boolean
 
+/**
+ * Apply bumps to a package. This will update the package.json version and changelog
+ * files.
+ *
+ * # Examples
+ *
+ * ```
+ * const { applyBumps } = require('workspace-node-tools');
+ * applyBumps(BumpOptions{});
+ * ```
+ *
+ * @param options - The bump options
+ */
+export declare function applyBumps(options: BumpOptions): Array<BumpPackage>
+
 export const enum Bump {
   Major = 'Major',
   Minor = 'Minor',
@@ -24,9 +39,12 @@ export const enum Bump {
 
 export interface BumpOptions {
   packages: Array<string>
+  since?: string
   releaseAs: Bump
   fetchAll?: boolean
   fetchTags?: boolean
+  syncDeps?: boolean
+  push?: boolean
   cwd?: string
 }
 
@@ -68,6 +86,8 @@ export interface Changes {
 
 export interface ChangesFileData {
   message?: string
+  gitUserName?: string
+  gitUserEmail?: string
   changes: ChangesData
 }
 
@@ -87,6 +107,8 @@ export declare function changesFileExist(cwd?: string | undefined | null): boole
 
 export interface ChangesOptions {
   message?: string
+  gitUserName?: string
+  gitUserEmail?: string
 }
 
 export interface Commit {
@@ -358,6 +380,35 @@ export declare function getRemoteOrLocalTags(
 ): Array<RemoteTags>
 
 /**
+ * Git add file to staging
+ *
+ * # Examples
+ *
+ * ```
+ * const { gitAdd } = require('workspace-node-tools');
+ * gitAdd("package.json", process.cwd());
+ * ```
+ *
+ * @param file - The file to add to staging
+ * @param cwd - The root path to start searching from
+ */
+export declare function gitAdd(file: string, cwd?: string | undefined | null): boolean
+
+/**
+ * Git add all files to staging
+ *
+ * # Examples
+ *
+ * ```
+ * const { gitAddAll } = require('workspace-node-tools');
+ * gitAddAll(process.cwd());
+ * ```
+ *
+ * @param cwd - The root path to start searching from
+ */
+export declare function gitAddAll(cwd?: string | undefined | null): boolean
+
+/**
  * Get all files changed since a commit id
  *
  * # Examples
@@ -408,6 +459,22 @@ export declare function gitCommit(
  * @param cwd - The root path to start searching from
  */
 export declare function gitCommitBranchName(sha: string, cwd?: string | undefined | null): string | null
+
+/**
+ * Git config user name and email
+ *
+ * # Examples
+ *
+ * ```
+ * const { gitConfig } = require('workspace-node-tools');
+ * gitConfig("John Doe", "john.doe@email.com", process.cwd());
+ * ```
+ *
+ * @param name - The user name to set
+ * @param email - The user email to set
+ * @param cwd - The root path to start searching from
+ */
+export declare function gitConfig(name: string, email: string, cwd?: string | undefined | null): boolean
 
 /**
  * Get the current branch
