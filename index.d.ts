@@ -30,7 +30,7 @@ export declare function addChange(change: Change, cwd?: string | undefined | nul
  */
 export declare function applyBumps(options: BumpOptions): Array<BumpPackage>
 
-export const enum Bump {
+export enum Bump {
   Major = 'Major',
   Minor = 'Minor',
   Patch = 'Patch',
@@ -627,7 +627,7 @@ export interface PackageInfo {
   changedFiles: Array<string>
 }
 
-export const enum PackageManager {
+export enum PackageManager {
   Npm = 'Npm',
   Yarn = 'Yarn',
   Pnpm = 'Pnpm',
