@@ -570,14 +570,19 @@ pub fn js_remove_change(branch_name: String, cwd: Option<String>) -> bool {
 ///
 /// ```
 /// const { changeExist } = require('workspace-node-tools');
-/// const exist = changeExist("branch-name", process.cwd());
+/// const exist = changeExist("branch-name", ["@scope/package-a"], process.cwd());
 /// ```
 ///
 /// @param branch_name - The branch name to check
+/// @param packages_name - The list of package names
 /// @param cwd - The root path to start searching from
 #[napi(js_name = "changeExist")]
-pub fn js_change_exist(branch_name: String, cwd: Option<String>) -> bool {
-  change_exist(branch_name, cwd)
+pub fn js_change_exist(
+  branch_name: String,
+  packages_name: Vec<String>,
+  cwd: Option<String>,
+) -> bool {
+  change_exist(branch_name, packages_name, cwd)
 }
 
 /// Get change

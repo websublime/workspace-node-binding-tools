@@ -72,13 +72,18 @@ export type ChangesData = {
  *
  * ```
  * const { changeExist } = require('workspace-node-tools');
- * const exist = changeExist("branch-name", process.cwd());
+ * const exist = changeExist("branch-name", ["@scope/package-a"], process.cwd());
  * ```
  *
  * @param branch_name - The branch name to check
+ * @param packages_name - The list of package names
  * @param cwd - The root path to start searching from
  */
-export declare function changeExist(branchName: string, cwd?: string | undefined | null): boolean
+export declare function changeExist(
+  branchName: string,
+  packagesName: Array<string>,
+  cwd?: string | undefined | null,
+): boolean
 
 export interface Changes {
   changes: ChangesData
