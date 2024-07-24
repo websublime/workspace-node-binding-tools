@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.7] - 2024-07-24
+
+### 🐛 Bug Fixes
+
+- Change exist signature
+
+### ⚙️ Miscellaneous Tasks
+
+- Update workspace-node-tools crate
+- Update readme api
+- Merge pull request #11 from websublime/feature/pretty-json-pnpm
+
 ## [0.7.6] - 2024-07-23
 
 ### 🚀 Features
