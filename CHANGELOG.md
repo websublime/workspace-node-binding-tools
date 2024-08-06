@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.9] - 2024-08-06
+
+### ⚙️ Miscellaneous Tasks
+
+- Update workspace-node-tools to fix the issue
+- Merge pull request #13 from websublime/fix/dependency-release
+
 ## [0.7.8] - 2024-07-24
 
 ### ⚙️ Miscellaneous Tasks
