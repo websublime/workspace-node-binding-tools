@@ -34,7 +34,7 @@ export enum Bump {
   Major = 'Major',
   Minor = 'Minor',
   Patch = 'Patch',
-  Snapshot = 'Snapshot',
+  Snapshot = 'Snapshot'
 }
 
 export interface BumpOptions {
@@ -79,11 +79,7 @@ export type ChangesData = {
  * @param packages_name - The list of package names
  * @param cwd - The root path to start searching from
  */
-export declare function changeExist(
-  branchName: string,
-  packagesName: Array<string>,
-  cwd?: string | undefined | null,
-): boolean
+export declare function changeExist(branchName: string, packagesName: Array<string>, cwd?: string | undefined | null): boolean
 
 export interface Changes {
   changes: ChangesData
@@ -164,11 +160,7 @@ export declare function detectPackageManager(root: string): PackageManager | nul
  * @param branch - The branch to compare against
  * @param cwd - The root path to start searching from
  */
-export declare function getAllFilesChangedSinceBranch(
-  packageInfo: Array<PackageInfo>,
-  branch: string,
-  cwd?: string | undefined | null,
-): Array<string>
+export declare function getAllFilesChangedSinceBranch(packageInfo: Array<PackageInfo>, branch: string, cwd?: string | undefined | null): Array<string>
 
 /**
  * Get bumps
@@ -212,10 +204,7 @@ export declare function getChange(branchName: string, cwd?: string | undefined |
  * @param sha - The commit sha to compare against (normally main branch)
  * @param cwd - The root path to start searching from
  */
-export declare function getChangedPackages(
-  sha?: string | undefined | null,
-  cwd?: string | undefined | null,
-): Array<PackageInfo>
+export declare function getChangedPackages(sha?: string | undefined | null, cwd?: string | undefined | null): Array<PackageInfo>
 
 /**
  * Get changes
@@ -245,11 +234,7 @@ export declare function getChanges(cwd?: string | undefined | null): Changes
  * @param since - The commit id (accepts branch, tag)
  * @param relative - The relative path to search from
  */
-export declare function getCommitsSince(
-  cwd?: string | undefined | null,
-  since?: string | undefined | null,
-  relative?: string | undefined | null,
-): Array<Commit>
+export declare function getCommitsSince(cwd?: string | undefined | null, since?: string | undefined | null, relative?: string | undefined | null): Array<Commit>
 
 /**
  * Get the conventional for a package
@@ -266,12 +251,7 @@ export declare function getCommitsSince(
  * @param cwd - The root path to start searching from
  * @param conventional_options - The conventional options
  */
-export declare function getConventionalForPackage(
-  packageInfo: PackageInfo,
-  noFetchAll?: boolean | undefined | null,
-  cwd?: string | undefined | null,
-  conventionalOptions?: ConventionalPackageOptions | undefined | null,
-): ConventionalPackage
+export declare function getConventionalForPackage(packageInfo: PackageInfo, noFetchAll?: boolean | undefined | null, cwd?: string | undefined | null, conventionalOptions?: ConventionalPackageOptions | undefined | null): ConventionalPackage
 
 /**
  * Get the defined package manager
@@ -315,10 +295,7 @@ export declare function getDivergedCommit(refer: string, cwd?: string | undefine
  * @param package_info - The list of package info
  * @param cwd - The root path to start searching from
  */
-export declare function getLastKnownPublishTagInfoForAllPackages(
-  packageInfo: Array<PackageInfo>,
-  cwd?: string | undefined | null,
-): Array<PublishTagInfo | undefined | null>
+export declare function getLastKnownPublishTagInfoForAllPackages(packageInfo: Array<PackageInfo>, cwd?: string | undefined | null): Array<PublishTagInfo | undefined | null>
 
 /**
  * Get the last known publish tag info for a package
@@ -333,10 +310,7 @@ export declare function getLastKnownPublishTagInfoForAllPackages(
  * @param package_info - The package info
  * @param cwd - The root path to start searching from
  */
-export declare function getLastKnownPublishTagInfoForPackage(
-  packageInfo: PackageInfo,
-  cwd?: string | undefined | null,
-): PublishTagInfo | null
+export declare function getLastKnownPublishTagInfoForPackage(packageInfo: PackageInfo, cwd?: string | undefined | null): PublishTagInfo | null
 
 /**
  * Get packages available in the monorepo
@@ -379,10 +353,7 @@ export declare function getProjectRootPath(root?: string | undefined | null): st
  * @param cwd - The root path to start searching from
  * @param local - Fetch local tags
  */
-export declare function getRemoteOrLocalTags(
-  cwd?: string | undefined | null,
-  local?: boolean | undefined | null,
-): Array<RemoteTags>
+export declare function getRemoteOrLocalTags(cwd?: string | undefined | null, local?: boolean | undefined | null): Array<RemoteTags>
 
 /**
  * Git add file to staging
@@ -443,12 +414,7 @@ export declare function gitAllFilesChangedSinceSha(sha: string, cwd?: string | u
  * @param footer - The commit footer
  * @param cwd - The root path to start searching from
  */
-export declare function gitCommit(
-  message: string,
-  body?: string | undefined | null,
-  footer?: string | undefined | null,
-  cwd?: string | undefined | null,
-): boolean
+export declare function gitCommit(message: string, body?: string | undefined | null, footer?: string | undefined | null, cwd?: string | undefined | null): boolean
 
 /**
  * Get the branch name from a commit id
@@ -581,11 +547,7 @@ export declare function gitPush(cwd?: string | undefined | null, followTags?: bo
  * @param message - The tag message
  * @param cwd - The root path to start searching from
  */
-export declare function gitTag(
-  tag: string,
-  message?: string | undefined | null,
-  cwd?: string | undefined | null,
-): boolean
+export declare function gitTag(tag: string, message?: string | undefined | null, cwd?: string | undefined | null): boolean
 
 /**
  * Init changes
@@ -599,10 +561,7 @@ export declare function gitTag(
  *
  * @param cwd - The root path to start searching from
  */
-export declare function initChanges(
-  cwd?: string | undefined | null,
-  changeOptions?: ChangesOptions | undefined | null,
-): ChangesFileData
+export declare function initChanges(cwd?: string | undefined | null, changeOptions?: ChangesOptions | undefined | null): ChangesFileData
 
 /**
  * Check if the workdir is unclean
@@ -636,7 +595,7 @@ export enum PackageManager {
   Npm = 'Npm',
   Yarn = 'Yarn',
   Pnpm = 'Pnpm',
-  Bun = 'Bun',
+  Bun = 'Bun'
 }
 
 export interface PackageRepositoryInfo {
