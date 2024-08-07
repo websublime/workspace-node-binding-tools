@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.11] - 2024-08-07
+
+### 🐛 Bug Fixes
+
+- Update workspace node tools to fix issue in change exist
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #15 from websublime/fix/change-exist-any-to-all
+
 ## [0.7.10] - 2024-08-07
 
 ### 🚀 Features
