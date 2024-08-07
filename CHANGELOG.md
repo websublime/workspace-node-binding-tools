@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.10] - 2024-08-07
+
+### 🚀 Features
+
+- Snapshot unique version generation
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #14 from websublime/feature/snapshot-unique
+
 ## [0.7.9] - 2024-08-06
 
 ### ⚙️ Miscellaneous Tasks
