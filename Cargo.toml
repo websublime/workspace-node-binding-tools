@@ -2,7 +2,7 @@
 authors = ["Miguel Ramos <miguel.ramos@websublime.dev>"]
 edition = "2021"
 name = "websublime_workspace-tools"
-version = "0.7.11"
+version = "0.7.12"
 exclude = ["tests/*", "examples/*", "node_modules/*", "target/*"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -11,13 +11,13 @@ exclude = ["tests/*", "examples/*", "node_modules/*", "target/*"]
 crate-type = ["cdylib"]
 
 [dependencies]
-napi-derive = "2.16.10"
-napi = { version = "2.16.8", default-features = false, features = [
+napi-derive = "2.16.11"
+napi = { version = "2.16.9", default-features = false, features = [
   "napi9",
   "serde-json",
   "tokio_rt",
 ] }
-workspace-node-tools = { version = "1.0.16", features = [
+workspace-node-tools = { version = "1.0.17", features = [
   "napi",
   "napi-derive",
 ] }
