@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.12] - 2024-09-09
+
+### 🐛 Bug Fixes
+
+- Workspace node tools update to fix check and duplicated entries
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #16 from websublime/fix/change-exist-duplicate
+
 ## [0.7.11] - 2024-08-07
 
 ### 🐛 Bug Fixes
