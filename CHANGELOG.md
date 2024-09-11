@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.13] - 2024-09-11
+
+### 🐛 Bug Fixes
+
+- Changes exist diff
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #17 from websublime/fix/change-exist-diff
+
 ## [0.7.12] - 2024-09-09
 
 ### 🐛 Bug Fixes
