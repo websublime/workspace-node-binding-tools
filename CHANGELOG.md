@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.14] - 2024-09-12
+
+### 🐛 Bug Fixes
+
+- Fix bump duplicate entries
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #18 from websublime/fix/bump-duplication
+
 ## [0.7.13] - 2024-09-11
 
 ### 🐛 Bug Fixes
