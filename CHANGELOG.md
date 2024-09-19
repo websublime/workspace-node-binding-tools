@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0] - 2024-09-19
+
+### 🚀 Features
+
+- Bumps by changes
+
+BREAKING CHANGES:
+
+- Bumps really in changes api.
+- Increment packages function api.
+- Increment changes functions api.
+- Implementing graph dependency.
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #19 from websublime/feature/bumps-by-changes
+
 ## [0.7.14] - 2024-09-12
 
 ### 🐛 Bug Fixes
