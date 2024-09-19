@@ -4,8 +4,8 @@ use std::path::{Path, PathBuf};
 
 use workspace_node_tools::bumps::{apply_bumps, get_bumps, BumpOptions, BumpPackage};
 use workspace_node_tools::changes::{
-  add_change, change_exist, changes_file_exist, get_change, get_changes, init_changes,
-  remove_change, Change, Changes, ChangesFileData, ChangesOptions,
+  add_change, change_exist, changes_file_exist, get_change, get_changes, get_package_change,
+  init_changes, remove_change, Change, Changes, ChangesFileData, ChangesOptions,
 };
 use workspace_node_tools::conventional::{
   get_conventional_for_package, ConventionalPackage, ConventionalPackageOptions,
@@ -20,7 +20,7 @@ use workspace_node_tools::git::{
 };
 use workspace_node_tools::manager::{detect_package_manager, PackageManager};
 use workspace_node_tools::packages::{
-  get_changed_packages, get_monorepo_package_manager, get_packages, PackageInfo,
+  get_changed_packages, get_monorepo_package_manager, get_package_info, get_packages, PackageInfo,
 };
 use workspace_node_tools::paths::get_project_root_path;
 
@@ -88,6 +88,22 @@ pub fn js_detect_package_manager(root: String) -> Option<PackageManager> {
 #[napi(js_name = "getPackages")]
 pub fn js_get_packages(cwd: Option<String>) -> Vec<PackageInfo> {
   get_packages(cwd)
+}
+
+/// Get PackageInfo for a package
+///
+/// # Examples
+///
+/// ```
+/// const { getPackageInfo } = require('workspace-node-tools');
+/// const packageInfo = getPackageInfo("package-name", process.cwd());
+/// ```
+///
+/// @param package_name - The name of the package to get info for
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "getPackageInfo")]
+pub fn js_get_package_info(package_name: String, cwd: Option<String>) -> Option<PackageInfo> {
+  get_package_info(package_name, cwd)
 }
 
 /// Get changed packages
@@ -495,7 +511,7 @@ pub fn js_get_conventional_for_package(
 /// @param options - The bump options
 #[napi(js_name = "getBumps")]
 pub fn js_get_bumps(options: BumpOptions) -> Vec<BumpPackage> {
-  get_bumps(options)
+  get_bumps(&options)
 }
 
 /// Apply bumps to a package. This will update the package.json version and changelog
@@ -511,7 +527,7 @@ pub fn js_get_bumps(options: BumpOptions) -> Vec<BumpPackage> {
 /// @param options - The bump options
 #[napi(js_name = "applyBumps")]
 pub fn js_apply_bumps(options: BumpOptions) -> Vec<BumpPackage> {
-  apply_bumps(options)
+  apply_bumps(&options)
 }
 
 /// Init changes
@@ -614,6 +630,27 @@ pub fn js_get_change(branch_name: String, cwd: Option<String>) -> Vec<Change> {
 #[napi(js_name = "getChanges")]
 pub fn js_get_changes(cwd: Option<String>) -> Changes {
   get_changes(cwd)
+}
+
+/// Get package change
+///
+/// # Examples
+///
+/// ```
+/// const { getPackageChange } = require('workspace-node-tools');
+/// const change = getPackageChange("@scope/package-a", "branch-name", process.cwd());
+/// ```
+///
+/// @param package_name - The package name
+/// @param branch - The branch name
+/// @param cwd - The root path to start searching from
+#[napi(js_name = "getPackageChange")]
+pub fn js_get_package_change(
+  package_name: String,
+  branch: String,
+  cwd: Option<String>,
+) -> Option<Change> {
+  get_package_change(package_name, branch, cwd)
 }
 
 /// Changes file exist

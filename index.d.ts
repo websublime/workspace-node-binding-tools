@@ -38,9 +38,9 @@ export enum Bump {
 }
 
 export interface BumpOptions {
-  packages: Array<string>
+  changes: Array<Change>
   since?: string
-  releaseAs: Bump
+  releaseAs?: Bump
   fetchAll?: boolean
   fetchTags?: boolean
   syncDeps?: boolean
@@ -51,8 +51,8 @@ export interface BumpOptions {
 export interface BumpPackage {
   from: string
   to: string
-  releaseAs: Bump
-  conventional: ConventionalPackage
+  packageInfo: PackageInfo
+  conventionalCommits: any
 }
 
 export interface Change {
@@ -134,6 +134,11 @@ export interface ConventionalPackage {
 export interface ConventionalPackageOptions {
   version?: string
   title?: string
+}
+
+export interface DependencyInfo {
+  name: string
+  version: string
 }
 
 /**
@@ -337,6 +342,41 @@ export declare function getLastKnownPublishTagInfoForPackage(
   packageInfo: PackageInfo,
   cwd?: string | undefined | null,
 ): PublishTagInfo | null
+
+/**
+ * Get package change
+ *
+ * # Examples
+ *
+ * ```
+ * const { getPackageChange } = require('workspace-node-tools');
+ * const change = getPackageChange("@scope/package-a", "branch-name", process.cwd());
+ * ```
+ *
+ * @param package_name - The package name
+ * @param branch - The branch name
+ * @param cwd - The root path to start searching from
+ */
+export declare function getPackageChange(
+  packageName: string,
+  branch: string,
+  cwd?: string | undefined | null,
+): Change | null
+
+/**
+ * Get PackageInfo for a package
+ *
+ * # Examples
+ *
+ * ```
+ * const { getPackageInfo } = require('workspace-node-tools');
+ * const packageInfo = getPackageInfo("package-name", process.cwd());
+ * ```
+ *
+ * @param package_name - The name of the package to get info for
+ * @param cwd - The root path to start searching from
+ */
+export declare function getPackageInfo(packageName: string, cwd?: string | undefined | null): PackageInfo | null
 
 /**
  * Get packages available in the monorepo
@@ -630,6 +670,7 @@ export interface PackageInfo {
   url: string
   repositoryInfo?: PackageRepositoryInfo
   changedFiles: Array<string>
+  dependencies: Array<DependencyInfo>
 }
 
 export enum PackageManager {
@@ -649,6 +690,16 @@ export interface PublishTagInfo {
   hash: string
   tag: string
   package: string
+}
+
+/** Struct representing the bump package. */
+export interface RecommendBumpPackage {
+  from: string
+  to: string
+  packageInfo: PackageInfo
+  conventional: ConventionalPackage
+  changedFiles: Array<string>
+  deployTo: Array<string>
 }
 
 export interface RemoteTags {
