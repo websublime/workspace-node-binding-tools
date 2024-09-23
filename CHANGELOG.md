@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2024-09-23
+
+### 🐛 Bug Fixes
+
+- Skipping non conventional commits
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge pull request #21 from websublime/fix/conventional-commits
+
 ## [1.0.1] - 2024-09-19
 
 ### 🐛 Bug Fixes
